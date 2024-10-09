@@ -9,52 +9,54 @@ body {
 
 .App {
   text-align: left;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Main Heading Styling */
 .main-heading {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #1e3a8a;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 /* Account Details Styling */
 .account-details {
   background-color: #e0f2fe;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
 .account-details h2 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #1e3a8a;
   font-weight: 600;
+  font-size: 1.5em;
 }
 
 .account-details p {
-  margin: 8px 0;
+  margin: 5px 0;
   font-weight: 500;
   color: #333;
+  font-size: 0.9em;
 }
 
 /* Stages Container Styling */
 .stages-container {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -62,17 +64,18 @@ body {
 .stage-column {
   flex: 1;
   background-color: #f1f5f9;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  min-width: 280px;
 }
 
 .stage-column h3 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #1e3a8a;
   font-weight: 600;
+  font-size: 1.3em;
 }
 
 /* Accordion Styling */
@@ -82,16 +85,17 @@ body {
 
 .accordion-item {
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .accordion-button {
   background-color: #dbeafe;
   color: #1e3a8a;
   border: none;
-  padding: 12px;
+  padding: 8px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   font-weight: 500;
+  font-size: 0.9em;
 }
 
 .accordion-button:hover {
@@ -101,71 +105,75 @@ body {
 .accordion-button:not(.collapsed) {
   color: #ffffff;
   background-color: #1e40af;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 }
 
 .accordion-body {
   background-color: #f1f5f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  font-size: 0.9em;
 }
 
 /* Opportunity Details Grid */
 .opportunity-details-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-bottom: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .opportunity-details-grid div {
   background-color: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   font-weight: 500;
+  font-size: 0.9em;
 }
 
 /* Quotes Styling */
 .quote {
   background-color: #e0e7ff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .quote-header {
   background-color: #60a5fa;
   color: #ffffff;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
 }
 
 /* Quote Line Items Table */
 .quote-line-items-table {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  font-size: 0.85em;
 }
 
 .table th {
   background-color: #bfdbfe;
   color: #1e3a8a;
-  padding: 12px;
-  border-bottom: 2px solid #ddd;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
   font-weight: 600;
 }
 
 .table td {
-  padding: 12px;
+  padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   background-color: #ffffff;
@@ -178,60 +186,63 @@ body {
 
 /* Styling Quotes and Quote Line Items Accordion */
 .quote-accordion {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .quote-accordion .accordion-item {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .quote-accordion .accordion-header {
   font-weight: 600;
+  font-size: 0.9em;
 }
 
 .quote-accordion .accordion-body {
-  padding: 20px;
+  padding: 15px;
   background-color: #f8fafc;
-  border-radius: 8px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  font-size: 0.9em;
 }
 
 /* Button Styling for Collapsing and Expanding */
 .button-container {
   text-align: right;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .button-container button {
   background-color: #1e40af;
   color: #ffffff;
   border: none;
-  padding: 12px 18px;
+  padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   font-weight: 600;
+  font-size: 0.85em;
 }
 
 .button-container button:hover {
   background-color: #1e3a8a;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Styling */
 @media (max-width: 1200px) {
   .container {
-    padding: 15px;
+    padding: 10px;
   }
 
   .opportunity-details-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
   .App {
-    font-size: 90%;
+    font-size: 85%;
   }
 
   .stages-container {
@@ -239,7 +250,7 @@ body {
   }
 
   .stage-column {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .opportunity-details-grid {
@@ -249,22 +260,22 @@ body {
 
 @media (max-width: 480px) {
   .App {
-    font-size: 85%;
+    font-size: 80%;
   }
 
   .main-heading {
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
 
   .accordion-button {
-    padding: 10px;
+    padding: 8px;
   }
 
   .opportunity-details-grid div {
-    padding: 10px;
+    padding: 8px;
   }
 
   .button-container button {
-    padding: 10px 15px;
+    padding: 8px 10px;
   }
 }
