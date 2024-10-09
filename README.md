@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# MOCK-REACTJS: Opportunities, Quotes, and Quote Line Items Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is a React application designed to display opportunities, quotes, and quote line items in a structured and visually appealing way. It uses Material-UI components for a modern and responsive UI, making it easy to navigate and view details about each account, opportunity, and related quotes.
 
-## Available Scripts
+### Key Features:
+- **Account Information:** Displays account details like name, industry, owner, and location.
+- **Opportunities Management:** Opportunities are categorized into **Open**, **In-Progress**, and **Closed** stages.
+- **Expandable Cards:** Users can expand/collapse each opportunity to view related information, including quotes and line items.
+- **Material-UI Integration:** Uses Material-UI components such as **Card**, **Accordion**, **Button**, and **Typography** to create a modern UI.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
+- **Node.js** (v14 or above recommended)
+- **npm** or **yarn** (for dependency management)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   ```
+2. **Navigate to the project directory**:
+   ```bash
+   cd MOCK-REACTJS
+   ```
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+   or if you prefer yarn:
+   ```bash
+   yarn install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Running the Application
+To start the application in development mode:
+```bash
+npm start
+```
+or
+```bash
+yarn start
+```
 
-### `npm test`
+The application will be available at **http://localhost:3000**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
+- **React**: A JavaScript library for building user interfaces.
+- **Material-UI**: For modern and responsive UI components.
+- **JavaScript (ES6+)**: The primary language used for logic.
+- **HTML/CSS**: For structuring and styling the components.
 
-### `npm run build`
+## Project Structure
+- **src/index.js**: Entry point of the React application, rendering the main component.
+- **src/App.js**: Main application file, responsible for rendering account details, opportunities, and their details.
+- **src/components/Opportunities.js**: A reusable component to display detailed opportunities information.
+- **src/components/Quotes.js**: Component responsible for displaying quotes related to opportunities.
+- **src/components/QuoteLineItems.js**: Component responsible for displaying quote line items.
+- **src/index.css**: General styles applied to the application.
+- **src/App.css**: Custom styles for the main application.
+- **public/**: Contains the HTML template for the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Salesforce LWC Integration
+To embed this React app into **Salesforce Lightning Experience** using **Lightning Web Components (LWC)**, you can follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Build the React App**
+   - Run the following command to create a production-ready build:
+     ```bash
+     npm run build
+     ```
+   - This will generate a **build/** folder with all the assets required for deployment.
 
-### `npm run eject`
+2. **Host the Built App**
+   - Upload the build files to a **static resource** in Salesforce. This allows the application assets to be accessed by Salesforce components.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Create LWC Component**
+   - Create an LWC component to embed the React app:
+   ```xml
+   <!-- opportunitiesQuotes.html -->
+   <template>
+     <div class="opportunities-quotes-app">
+       <lightning-container src="/resource/build/index.html" class="container"></lightning-container>
+     </div>
+   </template>
+   ```
+   - The `lightning-container` tag can be used to display third-party content or hosted HTML/JavaScript apps.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Deploy to Salesforce**
+   - Deploy the LWC component to Salesforce and add it to an account page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Additional Notes
+- Ensure that the Salesforce **Content Security Policy (CSP)** allows for third-party resources, or use **Lightning Out** if direct embedding faces issues.
+- React apps are typically embedded using **iframes** or **containers** in Salesforce for compatibility.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Folder Structure
+```
+.
+├── public
+│   └── index.html
+├── src
+│   ├── App.js
+│   ├── App.css
+│   ├── components
+│   │   ├── Opportunities.js
+│   │   ├── Quotes.js
+│   │   ├── QuoteLineItems.js
+│   │   └── Quotes.css
+│   ├── index.js
+│   ├── index.css
+└── README.md
+```
 
-## Learn More
+## Customization
+- **UI Customization**: You can customize the UI by modifying **App.css** or adding your own Material-UI styles using the `sx` prop.
+- **Opportunities Data**: Currently, the data is hardcoded in `App.js`. Replace it with an API call or Salesforce backend to dynamically retrieve data.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
+This project is licensed under the MIT License. See the **LICENSE** file for more information.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgments
+- **Material-UI** for the modern UI components.
+- **Salesforce** for providing powerful integration capabilities.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+Thank you for using the **MOCK-REACTJS: Opportunities, Quotes, and Quote Line Items Application**. Feel free to contribute or suggest any enhancements!
