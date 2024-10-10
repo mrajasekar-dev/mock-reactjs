@@ -1,76 +1,39 @@
 import React from 'react';
-import { useTable } from 'react-table';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-
-const QuoteLineItems = ({ lineItems }) => {
-  // Define columns for the React Table
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Name',
-        accessor: 'name', // Key for lineItems
-      },
-      {
-        Header: 'Description',
-        accessor: 'description',
-      },
-      {
-        Header: 'Quantity',
-        accessor: 'quantity',
-      },
-      {
-        Header: 'Price',
-        accessor: 'price',
-      },
-      {
-        Header: 'Total Price',
-        accessor: (row) => row.quantity * row.price, // Calculated value
-      }
-    ],
-    []
-  );
-
-  // Define data for the React Table
-  const data = React.useMemo(() => lineItems, [lineItems]);
-
-  // Use the useTable hook from React Table
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow
-  } = useTable({ columns, data });
-
+function QuoteLineItems({ lineItems = [] }) { // Default value to prevent undefined
   return (
-    <div className="quote-line-items-table">
-      <h4>Line Items:</h4>
-      <table {...getTableProps()} className="table table-bordered table-hover">
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
+    <TableContainer component={Paper}>
+      <Table size="small" aria-label="line items table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Description</TableCell>
+            <TableCell>Quantity</TableCell>
+            <TableCell>Unit Price</TableCell>
+            <TableCell>Total Price</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {lineItems.map((item) => (
+            <TableRow key={item.Id}>
+              <TableCell>{item.Name}</TableCell>
+              <TableCell>{item.Description}</TableCell>
+              <TableCell>{item.Quantity}</TableCell>
+              <TableCell>${item.UnitPrice}</TableCell>
+              <TableCell>${item.TotalPrice}</TableCell>
+            </TableRow>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => (
-                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
-};
+}
 
 export default QuoteLineItems;
