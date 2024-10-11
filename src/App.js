@@ -211,12 +211,12 @@ function App() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const encodedData = urlParams.get('accountData');
+    const rawAccountData = urlParams.get('accountData');
     
-    if (encodedData) {
+    if (rawAccountData) {
       try {
-        const decodedData = JSON.parse(decodeURIComponent(encodedData));
-        setAccountData(decodedData);
+        const parsedData = JSON.parse(rawAccountData);
+        setAccountData(parsedData);
       } catch (error) {
         console.error('Error parsing account data:', error);
         setError('Error parsing account data');
