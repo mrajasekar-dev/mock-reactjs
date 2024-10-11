@@ -219,6 +219,7 @@ function App() {
         setAccountData(decodedData);
       } catch (error) {
         console.error('Error parsing account data:', error);
+        setError('Error parsing account data');
       }
     }
     setIsLoading(false);
@@ -247,27 +248,21 @@ function App() {
   };
 
   // Determine which data to use
-  const data = accountData && accountData.Opportunities ? accountData.Opportunities : dummyData;
+  const data = accountData && accountData.Opportunities && accountData.Opportunities.length > 0 
+    ? accountData.Opportunities 
+    : dummyData;
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (!accountData) {
-    return <div>No account data available</div>;
-  }
-
-  if (accountData.Opportunities.length === 0) {
-    return <div>No opportunities found for this account</div>;
-  }
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      {error && <Typography color="error">{error}</Typography>}
-      
       <Typography variant="h4" component="h1" align="center" gutterBottom sx={{ fontWeight: 'bold', color: blue[700] }}>
         Opportunities, Quotes, and Quote Line Items
       </Typography>
 
-      <AccountDetails account={accountData ? accountData.Account : {
+      <AccountDetails account={accountData && accountData.Account ? accountData.Account : {
         name: 'TechCorp Solutions',
         industry: 'Information Technology',
         owner: 'Sarah Johnson',
@@ -353,6 +348,5 @@ function App() {
     </Container>
   );
 }
-
 
 export default App;
