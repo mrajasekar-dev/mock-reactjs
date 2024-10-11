@@ -2,15 +2,15 @@ import React from 'react';
 import { Card, CardContent, Typography, CardActionArea } from '@mui/material';
 import { blue } from '@mui/material/colors';
 
-function QuoteLineItemCard({ lineItem, onClick, isClosedStage }) {
+function QuoteLineItemCard({ lineItem, onClick }) {
   return (
     <Card 
       variant="outlined" 
       sx={{ 
         mb: 1, 
-        bgcolor: isClosedStage ? 'white' : blue[25],
+        bgcolor: 'white',
         '&:hover': {
-          bgcolor: isClosedStage ? blue[50] : blue[100],
+          bgcolor: blue[50],
         },
       }}
     >

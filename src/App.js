@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, Button, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccountDetails from './components/details/AccountDetails';
@@ -8,14 +8,12 @@ import Grid from '@mui/material/Grid';
 import { blue } from '@mui/material/colors';
 
 function App() {
-  const account = {
-    name: 'TechCorp Solutions',
-    industry: 'Information Technology',
-    owner: 'Sarah Johnson',
-    location: 'San Francisco, CA',
-  };
+  const [accountData, setAccountData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const data = [
+  // Your original dummy data
+  const dummyData = [
     {
       id: 'opp1',
       name: 'Enterprise CRM Implementation',
@@ -211,12 +209,25 @@ function App() {
     },
   ];
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedData = urlParams.get('accountData');
+    
+    if (encodedData) {
+      try {
+        const decodedData = JSON.parse(decodeURIComponent(encodedData));
+        setAccountData(decodedData);
+      } catch (error) {
+        console.error('Error parsing account data:', error);
+      }
+    }
+  }, []);
+
   const [expandedPanels, setExpandedPanels] = React.useState({
     open: false,
     inProgress: false,
     closed: false,
   });
-
 
   const handleToggleAll = () => {
     const expandAll = !expandedPanels.open && !expandedPanels.inProgress && !expandedPanels.closed;
@@ -234,13 +245,25 @@ function App() {
     }));
   };
 
+  // Determine which data to use
+  const data = accountData && accountData.Opportunities ? accountData.Opportunities : dummyData;
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      {error && <Typography color="error">{error}</Typography>}
+      
       <Typography variant="h4" component="h1" align="center" gutterBottom sx={{ fontWeight: 'bold', color: blue[700] }}>
         Opportunities, Quotes, and Quote Line Items
       </Typography>
 
-      <AccountDetails account={account} />
+      <AccountDetails account={accountData ? accountData.Account : {
+        name: 'TechCorp Solutions',
+        industry: 'Information Technology',
+        owner: 'Sarah Johnson',
+        location: 'San Francisco, CA',
+      }} />
 
       <Button variant="contained" color="primary" onClick={handleToggleAll} sx={{ mb: 2, bgcolor: blue[100], color: blue[700] }}>
         {(expandedPanels.open && expandedPanels.inProgress && expandedPanels.closed) ? 'Collapse All' : 'Expand All'}
@@ -256,8 +279,8 @@ function App() {
               <OpportunityAccordion 
                 opportunities={data.filter(opp => opp.stage === 'Qualification')} 
                 title="Qualification Stage" 
-                color={blue[25]}
-                quoteColor={blue[50]}
+                color={blue[50]}
+                quoteColor={blue[100]}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -285,7 +308,7 @@ function App() {
               <OpportunityAccordion 
                 opportunities={data.filter(opp => opp.stage === 'Negotiation')} 
                 title="Negotiation Stage" 
-                color={blue[75]}
+                color={blue[50]}
                 quoteColor={blue[100]}
               />
             </Grid>
@@ -304,8 +327,7 @@ function App() {
                 opportunities={data.filter(opp => opp.stage === 'Closed Won')} 
                 title="Closed Won Stage" 
                 color={blue[50]}
-                quoteColor={blue[150]}
-                isClosedStage={true}
+                quoteColor={blue[100]}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -313,8 +335,7 @@ function App() {
                 opportunities={data.filter(opp => opp.stage === 'Closed Lost')} 
                 title="Closed Lost Stage" 
                 color={blue[50]}
-                quoteColor={blue[200]}
-                isClosedStage={true}
+                quoteColor={blue[100]}
               />
             </Grid>
           </Grid>

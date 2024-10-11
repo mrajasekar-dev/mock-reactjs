@@ -5,7 +5,7 @@ import QuoteLineItemCard from './QuoteLineItemCard';
 import QuoteLineItemModal from './QuoteLineItemModal';
 import { blue } from '@mui/material/colors';
 
-function OpportunityAccordion({ opportunities, title, color, quoteColor, isClosedStage = false }) {
+function OpportunityAccordion({ opportunities, title, color, quoteColor }) {
   const [expandedQuote, setExpandedQuote] = useState(null);
   const [selectedLineItem, setSelectedLineItem] = useState(null);
 
@@ -28,7 +28,7 @@ function OpportunityAccordion({ opportunities, title, color, quoteColor, isClose
         <Typography variant="body1">No records to display</Typography>
       ) : (
         opportunities.map((opportunity) => (
-          <Accordion key={opportunity.id} sx={{ bgcolor: 'white' }}>
+          <Accordion key={opportunity.id} sx={{ bgcolor: 'white', mb: 2 }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography color={blue[700]}>{opportunity.name}</Typography>
             </AccordionSummary>
@@ -43,7 +43,7 @@ function OpportunityAccordion({ opportunities, title, color, quoteColor, isClose
                   key={quote.id} 
                   expanded={expandedQuote === quote.id} 
                   onChange={handleQuoteExpand(quote.id)}
-                  sx={{ bgcolor: isClosedStage ? 'white' : quoteColor, mt: 2 }}
+                  sx={{ bgcolor: 'white', mt: 2, boxShadow: 1 }}
                 >
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography color={blue[700]}>{quote.name}</Typography>
@@ -60,7 +60,6 @@ function OpportunityAccordion({ opportunities, title, color, quoteColor, isClose
                           <QuoteLineItemCard 
                             lineItem={lineItem} 
                             onClick={() => handleLineItemClick(lineItem)}
-                            isClosedStage={isClosedStage}
                           />
                         </Grid>
                       ))}
