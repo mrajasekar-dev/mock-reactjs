@@ -221,6 +221,7 @@ function App() {
         console.error('Error parsing account data:', error);
       }
     }
+    setIsLoading(false);
   }, []);
 
   const [expandedPanels, setExpandedPanels] = React.useState({
@@ -249,6 +250,14 @@ function App() {
   const data = accountData && accountData.Opportunities ? accountData.Opportunities : dummyData;
 
   if (isLoading) return <div>Loading...</div>;
+
+  if (!accountData) {
+    return <div>No account data available</div>;
+  }
+
+  if (accountData.Opportunities.length === 0) {
+    return <div>No opportunities found for this account</div>;
+  }
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
