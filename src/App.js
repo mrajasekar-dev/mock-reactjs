@@ -217,25 +217,16 @@ function App() {
     console.log('accountId: '+accountId);
     console.log('urlParams: '+urlParams);
 
-    const authenticate = async () => {
+    const authenticateAndFetchData = async (accountId) => {
       try {
-        const authResponse = await axios.post('https://socrat-iq.onrender.com/salesforce/auth');
-        console.log('Authentication Response:', authResponse.data);
-
-        const accessToken = authResponse.data.access_token;
-        const accountDataResponse = await axios.get(`https://gmailcomexpcomm-dev-ed.develop.my.salesforce.com/services/apexrest/accountData/${accountId}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-
-        console.log('Account Data Response:', accountDataResponse.data);
+        const response = await axios.post('https://your-backend-url.com/salesforce/auth', { accountId });
+        console.log('Account Data:', response.data);
       } catch (error) {
-        console.error('Error during API calls:', error);
+        console.error('Error fetching Salesforce data:', error);
       }
     };
 
-    authenticate();
+    authenticateAndFetchData();
     setIsLoading(false);
   }, []);
 
