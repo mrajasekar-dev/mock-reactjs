@@ -219,7 +219,7 @@ function App() {
 
     const authenticateAndFetchData = async (accountId) => {
       try {
-        const response = await axios.post('https://your-backend-url.com/salesforce/auth', { accountId });
+        const response = await axios.post('https://socrat-iq.onrender.com/salesforce/auth', { accountId });
         console.log('Account Data:', response.data);
       } catch (error) {
         console.error('Error fetching Salesforce data:', error);
