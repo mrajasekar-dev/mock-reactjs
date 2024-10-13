@@ -219,14 +219,7 @@ function App() {
 
     const authenticate = async () => {
       try {
-        const authResponse = await axios.post('https://login.salesforce.com/services/oauth2/token', new URLSearchParams({
-          grant_type: 'password',
-          username: 'mrajasekar.dev@gmail.com.exp.comm',
-          password: 'Raja@1999gOD0NkDCcxhGJIbeJQVmGj6ga',
-          client_id: '3MVG9k02hQhyUgQBDF9v2Il0Kzfg0Pbj3uV84tr04JBbPl1w93mlJHDP8yo0DnIbJPkp0ESaX.k8I1NswhYjG',
-          client_secret: '8BB30FDB81ECA966E677577A656DE69BCD355AFD7A85300C7807F21045F2C2BC',
-        }));
-
+        const authResponse = await axios.post('https://socrat-iq.onrender.com/salesforce/auth');
         console.log('Authentication Response:', authResponse.data);
 
         const accessToken = authResponse.data.access_token;
