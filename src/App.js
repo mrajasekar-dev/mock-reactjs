@@ -6,6 +6,7 @@ import OpportunityAccordion from './components/details/OpportunityAccordion';
 import './App.css';
 import Grid from '@mui/material/Grid';
 import { blue } from '@mui/material/colors';
+import axios from 'axios'; // Add axios for making API calls
 
 function App() {
   const [accountData, setAccountData] = useState(null);
@@ -211,19 +212,38 @@ function App() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const rawAccountData = urlParams.get('accountData');
-    
-    if (rawAccountData) {
+    const accountId = urlParams.get('accountId'); // Get accountId from query parameters
+
+    // API Number 1: Authentication
+    const authenticate = async () => {
       try {
-        const parsedData = JSON.parse(rawAccountData);
-        setAccountData(parsedData);
+        const authResponse = await axios.post('https://login.salesforce.com/services/oauth2/token', new URLSearchParams({
+          grant_type: 'password',
+          username: 'mrajasekar.dev@gmail.com.exp.comm', // Use your actual username
+          password: 'Raja@1999gOD0NkDCcxhGJIbeJQVmGj6ga', // Use your actual password
+          client_id: '3MVG9k02hQhyUgQBDF9v2Il0Kzfg0Pbj3uV84tr04JBbPl1w93mlJHDP8yo0DnIbJPkp0ESaX.k8I1NswhYjG',
+          client_secret: '8BB30FDB81ECA966E677577A656DE69BCD355AFD7A85300C7807F21045F2C2BC',
+        }));
+
+        console.log('Authentication Response:', authResponse.data); // Log authentication response
+
+        // API Number 2: Fetching account data
+        const accessToken = authResponse.data.access_token; // Extract access token
+        const accountDataResponse = await axios.get(`https://gmailcomexpcomm-dev-ed.develop.my.salesforce.com/services/apexrest/accountData/${accountId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Set authorization header
+          },
+        });
+
+        console.log('Account Data Response:', accountDataResponse.data); // Log account data response
       } catch (error) {
-        console.error('Error parsing account data:', error);
-        setError('Error parsing account data');
+        console.error('Error during API calls:', error); // Log any errors
       }
-    }
-    setIsLoading(false);
-  }, []);
+    };
+
+    authenticate(); // Call the authenticate function
+    setIsLoading(false); // Set loading to false after API calls
+  }, []); // Dependency array remains empty to run only once
 
   const [expandedPanels, setExpandedPanels] = React.useState({
     open: false,
