@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/.sfdx
 .pnp.js
 
 # testing
