@@ -59,6 +59,12 @@ Dummy data in `App.js` allows for development without a Salesforce connection.
 
 Contributions are welcome! Please submit a Pull Request.
 
+## Screenshots
+Accordion from External React Site<br>
+![Accordion from External React Site](https://github.com/mrajasekar-dev/exp-comm/blob/main/screenshots/Accordion%20from%20External%20React%20Site.png)
+<br><br>Quote Line Item Card from External React Site<br>
+![Quote Line Item Card from External React Site](https://github.com/mrajasekar-dev/exp-comm/blob/main/screenshots/Quote%20Line%20Item%20Card%20from%20External%20React%20Site.png)
+
 ## License
 
 MIT License
