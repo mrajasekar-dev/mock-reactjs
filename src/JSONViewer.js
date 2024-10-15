@@ -31,28 +31,6 @@ function JSONViewer() {
       authenticateAndFetchData();
     }, []);
   
-    const [expandedPanels, setExpandedPanels] = React.useState({
-      open: false,
-      inProgress: false,
-      closed: false,
-    });
-  
-    const handleToggleAll = () => {
-      const expandAll = !expandedPanels.open && !expandedPanels.inProgress && !expandedPanels.closed;
-      setExpandedPanels({
-        open: expandAll,
-        inProgress: expandAll,
-        closed: expandAll,
-      });
-    };
-  
-    const handleAccordionChange = (panel) => (event, isExpanded) => {
-      setExpandedPanels((prevState) => ({
-        ...prevState,
-        [panel]: isExpanded,
-      }));
-    };
-  
     // Determine which data to use
     const data = accountData && accountData.Opportunities && accountData.Opportunities.length > 0
       ? accountData.Opportunities

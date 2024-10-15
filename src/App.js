@@ -7,8 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainComponent />} />
-        <Route path="/concept" element={<JSONViewer />} />
+        <Route path="/concept" element={<MainComponent />} />
+        <Route path="/" element={<JSONViewer />} />
       </Routes>
     </BrowserRouter>
   );
