@@ -17,7 +17,7 @@ function MainComponent() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const accountId = urlParams.get('accountId');
-    const apiEndpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://your-api-endpoint.com';
+    const apiEndpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://socrat-iq.onrender.com';
 
     const fetchData = async () => {
         setIsLoading(true);  // Ensure loading state is set when the request starts
