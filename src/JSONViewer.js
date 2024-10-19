@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     container: {
         backgroundColor: '#f5f5f5', // Lighter background for the container
         padding: theme.spacing(4),
+        width: '40%',
         borderRadius: '12px', // Rounded container
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
     },
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     accordionSummary: {
         backgroundColor: '#e0e0e0', // Lighter accordion summary background
         color: '#000000', // Darker text for contrast
-        borderRadius: '12px 12px 0 0', // Rounded top corners
+        borderRadius: '0 2px 10px rgba(0, 0, 0, 0.1)', // Rounded top corners
         '&:hover': {
             backgroundColor: '#d0d0d0', // Slightly darker on hover
         },
