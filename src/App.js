@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import MainComponent from './MainComponent'; // Main component that includes the Accordion and other details
-import JSONViewer from './JSONViewer'; // Component for displaying JSON data
+import MainComponent from './MainComponent';
+import JSONViewer from './JSONViewer';
 
 const theme = createTheme({
   palette: {

@@ -1,4 +1,3 @@
-// Your original dummy data
 const dummyData = [
     {
       id: 'opp1',
